@@ -3,6 +3,19 @@ from datetime import datetime
 import os
 from flask import Flask, send_file, jsonify, request
 from flask_cors import CORS
+import threading
+import time
+import requests
+
+def keep_alive():
+    while True:
+        time.sleep(840)
+        try:
+            requests.get("https://URL-YAKO-HALISI.onrender.com/api/health")
+        except:
+            pass
+
+threading.Thread(target=keep_alive, daemon=True).start()
  
 app = Flask(__name__)
 CORS(app)  # Ruhusu maombi kutoka frontend yoyote
