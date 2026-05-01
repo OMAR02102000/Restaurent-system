@@ -6,6 +6,9 @@ from flask_cors import CORS
  
 app = Flask(__name__)
 CORS(app)  # Ruhusu maombi kutoka frontend yoyote
+@app.route('/')
+def home():
+    return send_file('index.html')
  
 # ============ DATABASE SETUP ============
 def setup_database():
